@@ -1,0 +1,11 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-11-04 18:31:23.948985",
+  "name": "Paid",
+  "style": "Success",
+  "workflow_state_name": "Paid"
+ }
+]
