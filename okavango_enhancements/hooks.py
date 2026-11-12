@@ -258,7 +258,7 @@ fixtures = [
 fixtures.extend([
     {
         "dt": "Workflow State",
-        "filters": [["name", "=", "Paid"]],
+        "filters": [["name", "in", ["Draft", "Pending Approval", "Paid"]]],
     },
     {
         "dt": "Workflow Action Master",
