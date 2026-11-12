@@ -1,11 +1,27 @@
 [
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2026-11-04 18:31:23.948985",
-  "name": "Paid",
-  "style": "Success",
-  "workflow_state_name": "Paid"
- }
+  {
+    "docstatus": 0,
+    "doctype": "Workflow State",
+    "icon": "",
+    "name": "Draft",
+    "style": "",
+    "workflow_state_name": "Draft"
+  },
+  {
+    "docstatus": 0,
+    "doctype": "Workflow State",
+    "icon": "",
+    "name": "Pending Approval",
+    "style": "",
+    "workflow_state_name": "Pending Approval"
+  },
+  {
+    "docstatus": 0,
+    "doctype": "Workflow State",
+    "icon": "",
+    "modified": "2026-11-04 18:31:23.948985",
+    "name": "Paid",
+    "style": "Success",
+    "workflow_state_name": "Paid"
+  }
 ]
