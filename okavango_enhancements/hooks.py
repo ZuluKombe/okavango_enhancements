@@ -195,3 +195,79 @@ app_license = "MIT"
 # auth_hooks = [
 #	"okavango_enhancements.auth.validate"
 # ]
+
+
+# ----------------------------------------------------------
+# Operational Payment Request - accounting and validation
+# ----------------------------------------------------------
+
+doc_events = {
+    "Journal Entry": {
+        "validate": "okavango_enhancements.operational_payment.controls.validate_journal_entry",
+        "before_submit": "okavango_enhancements.operational_payment.controls.validate_journal_entry",
+        "after_insert": "okavango_enhancements.operational_payment.controls.after_insert_journal_entry",
+        "on_update": "okavango_enhancements.operational_payment.controls.on_update_journal_entry",
+        "before_cancel": "okavango_enhancements.operational_payment.controls.before_cancel_journal_entry",
+        "on_cancel": "okavango_enhancements.operational_payment.controls.on_cancel_journal_entry",
+        "on_trash": "okavango_enhancements.operational_payment.controls.on_trash_journal_entry",
+    },
+    "Operational Payment Request": {
+        "validate": "okavango_enhancements.operational_payment.controls.validate_operational_payment_request",
+        "before_update_after_submit": "okavango_enhancements.operational_payment.controls.before_update_after_submit_operational_request",
+    },
+}
+
+
+# ----------------------------------------------------------
+# Operational Payment Request - selected fixtures only
+# ----------------------------------------------------------
+
+fixtures = [
+    {
+        "dt": "Role",
+        "filters": [
+            ["name", "in", [
+                "Operational Payment Requester",
+                "Operational Payment Approver",
+                "Operational Payment Finance",
+            ]]
+        ],
+    },
+    {
+        "dt": "Custom Field",
+        "filters": [
+            ["dt", "=", "Journal Entry"],
+            ["fieldname", "in", [
+                "custom_operational_payment_request",
+                "custom_customer_order_reference",
+            ]],
+        ],
+    },
+    {
+        "dt": "Client Script",
+        "filters": [
+            ["name", "=", "Okavango OPR Original Package Clone"]
+        ],
+    },
+    # The Workflow is maintained separately in zz_workflow.json.
+    # Frappe v15 otherwise regenerates workflow.json on export-fixtures.
+]
+
+# OPR-specific workflow dependencies.
+# Shared states Draft, Approved and Pending Approval are excluded.
+fixtures.extend([
+    {
+        "dt": "Workflow State",
+        "filters": [["name", "=", "Paid"]],
+    },
+    {
+        "dt": "Workflow Action Master",
+        "filters": [["name", "in", [
+            "Approve Operational Payment",
+            "Mark Operational Payment Paid",
+            "Reopen Operational Payment for Correction",
+            "Return Operational Payment to Draft",
+            "Send Operational Payment for Approval",
+        ]]],
+    },
+])
