@@ -243,18 +243,11 @@ fixtures = [
             ]],
         ],
     },
-    {
-        "dt": "Client Script",
-        "filters": [
-            ["name", "=", "Okavango OPR Original Package Clone"]
-        ],
-    },
-    # The Workflow is maintained separately in zz_workflow.json.
-    # Frappe v15 otherwise regenerates workflow.json on export-fixtures.
+    # Workflow and Client Script are seeded on first installation only.
 ]
 
 # OPR-specific workflow dependencies.
-# Shared states Draft, Approved and Pending Approval are excluded.
+# Draft, Pending Approval and Paid are included; Approved is excluded.
 fixtures.extend([
     {
         "dt": "Workflow State",
@@ -271,3 +264,8 @@ fixtures.extend([
         ]]],
     },
 ])
+
+
+# Install initial OPR workflow and Client Script after fixture synchronization.
+# This hook does not run during ordinary site migrations.
+after_sync = "okavango_enhancements.operational_payment.install.seed_opr_defaults"
