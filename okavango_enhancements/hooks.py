@@ -213,6 +213,7 @@ doc_events = {
     },
     "Operational Payment Request": {
         "validate": "okavango_enhancements.operational_payment.controls.validate_operational_payment_request",
+        "before_submit": "okavango_enhancements.operational_payment.controls.before_submit_operational_request",
         "before_update_after_submit": "okavango_enhancements.operational_payment.controls.before_update_after_submit_operational_request",
     },
 }

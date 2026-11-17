@@ -341,5 +341,34 @@ def validate_operational_payment_request(doc, method=None):
         _assert_paid_evidence(doc)
 
 
+
+def before_submit_operational_request(doc, method=None):
+    """Prevent direct submission that bypasses independent OPR approval."""
+    previous = doc.get_doc_before_save()
+
+    if (
+        not previous
+        or int(previous.docstatus) != 0
+        or previous.workflow_state != 'Pending Approval'
+        or doc.workflow_state != APPROVED_STATE
+    ):
+        frappe.throw(
+            _('Only a Pending Approval request may be submitted as Approved.'),
+            frappe.PermissionError,
+        )
+
+    if not _approver_user():
+        frappe.throw(
+            _('Only an authorised Approver may submit an OPR.'),
+            frappe.PermissionError,
+        )
+
+    if previous.owner == frappe.session.user and frappe.session.user != 'Administrator':
+        frappe.throw(
+            _('You cannot approve your own Operational Payment Request.'),
+            frappe.PermissionError,
+        )
+
+
 def before_update_after_submit_operational_request(doc, method=None):
     validate_operational_payment_request(doc, method)
