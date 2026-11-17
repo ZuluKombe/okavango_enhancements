@@ -270,3 +270,48 @@ fixtures.extend([
 # Install initial OPR workflow and Client Script after fixture synchronization.
 # This hook does not run during ordinary site migrations.
 after_sync = "okavango_enhancements.operational_payment.install.seed_opr_defaults"
+
+
+# ==========================================================
+# OKAVANGO MATERIAL REQUEST AUTOMATIC STOCK POSTING
+# Feature-flagged; does not replace existing OPR handlers.
+# ==========================================================
+
+def _register_material_request_hook(doctype, event, handler):
+    current = doc_events.setdefault(doctype, {})
+    existing = current.get(event)
+
+    if not existing:
+        current[event] = handler
+    elif isinstance(existing, (list, tuple)):
+        if handler not in existing:
+            current[event] = list(existing) + [handler]
+    elif existing != handler:
+        current[event] = [existing, handler]
+
+
+_register_material_request_hook(
+    "Material Request",
+    "on_submit",
+    "okavango_enhancements.automatic_material_issue.on_material_request_submit",
+)
+
+_register_material_request_hook(
+    "Material Request",
+    "before_cancel",
+    "okavango_enhancements.automatic_material_issue.before_material_request_cancel",
+)
+
+_register_material_request_hook(
+    "Stock Entry",
+    "before_cancel",
+    "okavango_enhancements.automatic_material_issue.before_automatic_stock_entry_cancel",
+)
+
+# Material Request approval status indicators
+doctype_list_js = {
+    **globals().get("doctype_list_js", {}),
+    "Material Request": "public/js/material_request_list.js",
+}
+
+# END OKAVANGO MATERIAL REQUEST AUTOMATION
