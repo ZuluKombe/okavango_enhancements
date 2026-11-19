@@ -315,3 +315,8 @@ doctype_list_js = {
 }
 
 # END OKAVANGO MATERIAL REQUEST AUTOMATION
+
+# Targeted ERPNext v15 Sales Invoice controller.
+override_doctype_class = {
+    "Sales Invoice": "okavango_enhancements.overrides.sales_invoice_targeted.TargetedSalesInvoice",
+}
