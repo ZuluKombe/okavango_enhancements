@@ -1,0 +1,7 @@
+{
+  "doctype": "Workflow State",
+  "icon": "",
+  "name": "Pending Approval",
+  "style": "",
+  "workflow_state_name": "Pending Approval"
+}

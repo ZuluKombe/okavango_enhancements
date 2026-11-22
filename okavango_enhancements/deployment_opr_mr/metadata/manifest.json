@@ -1,0 +1,256 @@
+{
+  "business_transactions_included": false,
+  "installation_enabled": false,
+  "package": "okavango-opr-mr",
+  "purpose": "PORTABLE METADATA - REVIEW ONLY",
+  "records": [
+    {
+      "doctype": "Client Script",
+      "file": "Client_Script/Okavango_OPR_Original_Package_Clone-5d25fda1.json",
+      "name": "Okavango OPR Original Package Clone",
+      "sha256": "5d25fda16f2323ef282fd4a7fef8bac737bf7ea68070ed150d90cc2bedcb52e9"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Journal_Entry-custom_customer_order_reference-3981f028.json",
+      "name": "Journal Entry-custom_customer_order_reference",
+      "sha256": "3981f0289e78fc0ab6d78a7fff5ae913b68b8f2a6031f8f2b6399cd5d324e0bb"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Journal_Entry-custom_operational_payment_request-ccd9abd8.json",
+      "name": "Journal Entry-custom_operational_payment_request",
+      "sha256": "ccd9abd8df07dcdae3f4e9da5cbb97a3cf75d9157cbf83689f05986b2e1e4a84"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Material_Request-requested_by-34931649.json",
+      "name": "Material Request-requested_by",
+      "sha256": "349316498c9112b199a4fa8597c88a72ac4dcf4ce445b38bdb7e0e2471987484"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Material_Request-required_by_company_name-129dd181.json",
+      "name": "Material Request-required_by_company_name",
+      "sha256": "129dd1810b6785cf5a54ddf012758e0604ba2da0b12ad5d2e6fdf9c62429646e"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Material_Request-workflow_state-75a15caa.json",
+      "name": "Material Request-workflow_state",
+      "sha256": "75a15caae7562939a438a3504d50cd1febcb0772365cd5739be6c7f30225360b"
+    },
+    {
+      "doctype": "Custom Field",
+      "file": "Custom_Field/Operational_Payment_Request-workflow_state-396ba3af.json",
+      "name": "Operational Payment Request-workflow_state",
+      "sha256": "396ba3afdba5e3ab37ba2180e76d5dd9f9f6a056a24fb26fa3357bfc1db20d27"
+    },
+    {
+      "doctype": "DocType",
+      "file": "DocType/Operational_Payment_Request-7223e3f9.json",
+      "name": "Operational Payment Request",
+      "sha256": "7223e3f9154bba3edc94f5ebf684598c589ad483c0e5c757fd2d86e2457d2665"
+    },
+    {
+      "doctype": "Property Setter",
+      "file": "Property_Setter/Material_Request-main-grid_page_length-47b15da2.json",
+      "name": "Material Request-main-grid_page_length",
+      "sha256": "47b15da293bd09fd250fb67336e4fedc16faea1491b2f10c9748f58443b3b7bc"
+    },
+    {
+      "doctype": "Property Setter",
+      "file": "Property_Setter/Material_Request-main-track_changes-727005b0.json",
+      "name": "Material Request-main-track_changes",
+      "sha256": "727005b06d11ec6fea79c4b70609a31fa8ee2b1b074d11462cbe1f4896e657c4"
+    },
+    {
+      "doctype": "Property Setter",
+      "file": "Property_Setter/Material_Request-material_request_type-options-20c8f2ef.json",
+      "name": "Material Request-material_request_type-options",
+      "sha256": "20c8f2efe9fde418796ea8991a87e95602083f67d8507a89b81b98faf8bfe9fe"
+    },
+    {
+      "doctype": "Property Setter",
+      "file": "Property_Setter/Material_Request-scan_barcode-hidden-53b12f5c.json",
+      "name": "Material Request-scan_barcode-hidden",
+      "sha256": "53b12f5caf09f1e6dc4b6b2f2ed41ae1650f806cff05fe76ff3b9e629537e2c7"
+    },
+    {
+      "doctype": "Property Setter",
+      "file": "Property_Setter/Material_Request-schedule_date-reqd-d4888499.json",
+      "name": "Material Request-schedule_date-reqd",
+      "sha256": "d4888499102e315d3d2b0ddf28bb17b37324689f38544c4f4990f21346729a02"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/COO_Approver-b9837d27.json",
+      "name": "COO Approver",
+      "sha256": "b9837d27567fdc97f6415c1bfb3625257caefaa0a28d0bc71def40a562101a34"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/Department_Approver-a50dcd7b.json",
+      "name": "Department Approver",
+      "sha256": "a50dcd7b8cbc981dc139f939c13f562ad095088df570f358a8d9402e88efc210"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/Material_Request_User-b9b3e876.json",
+      "name": "Material Request User",
+      "sha256": "b9b3e876c530647baecf9e7597197a39b171f31b8579553a8fad12ca0e3a4b46"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/Operational_Payment_Approver-d1d3f0cf.json",
+      "name": "Operational Payment Approver",
+      "sha256": "d1d3f0cfcee2c94777a9e0e8cf1ba610d1b8bc1c3bdea163e839e29fc03e593c"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/Operational_Payment_Finance-690ff081.json",
+      "name": "Operational Payment Finance",
+      "sha256": "690ff081788b7bdce1da24e42642d763b603cbf8a472d84929cde14b36e2ec18"
+    },
+    {
+      "doctype": "Role",
+      "file": "Role/Operational_Payment_Requester-ebf88ad2.json",
+      "name": "Operational Payment Requester",
+      "sha256": "ebf88ad259a6a92fe3359e2dc0853ec22ae11fa429fb8b50c94bc70febcd33d9"
+    },
+    {
+      "doctype": "Workflow",
+      "file": "Workflow/Material_Request_-_COO_Approval-2bc4f497.json",
+      "name": "Material Request - COO Approval",
+      "sha256": "2bc4f497f6ed5632714e368dcf5a1b7c608ff9be92feae2265a5a3bbfea0b1b7"
+    },
+    {
+      "doctype": "Workflow",
+      "file": "Workflow/Okavango_Operational_Payment_Approval-eac65710.json",
+      "name": "Okavango Operational Payment Approval",
+      "sha256": "eac657104f874a158bede7de40de8d5af600a49b6cdcb32a7333e0c5da3ae243"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Approve-c443f841.json",
+      "name": "Approve",
+      "sha256": "c443f84114509b50995411d4de39d5c2d45c109d9a070992c6ee2293fd1b496d"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Approve_Operational_Payment-0439178a.json",
+      "name": "Approve Operational Payment",
+      "sha256": "0439178ac68d5125ff7f10cda8d90d8316778b22d58b59c9e2c5fb6a22d5d4c4"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Cancel_Request-1ebee8c3.json",
+      "name": "Cancel Request",
+      "sha256": "1ebee8c3d4936012c255df48b659f129f11d736c746eec9ad985af336a470054"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Mark_Operational_Payment_Paid-9f89f190.json",
+      "name": "Mark Operational Payment Paid",
+      "sha256": "9f89f1900ac3457738760fd5e91f07363f81fc3f154727b14b43aeed58ed1e40"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Reject-79daf722.json",
+      "name": "Reject",
+      "sha256": "79daf72235047726e5c37ae2138b39b5ca06badbeade67ddd16247386630427a"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Reopen_Operational_Payment_for_Correction-75014c1a.json",
+      "name": "Reopen Operational Payment for Correction",
+      "sha256": "75014c1a57d0f0b4cca1ff9dd9c5e4bd3780f14b64a7b04e4f6f554d9320350c"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Resubmit-0aa1ee8e.json",
+      "name": "Resubmit",
+      "sha256": "0aa1ee8ef7a91f91dac4d4752cfa0534403a2bb3d31fae5592c1807090348b61"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Return-71aae5e7.json",
+      "name": "Return",
+      "sha256": "71aae5e781f6286e3bb5732c4f03b1fdda80670f5ffd5d461fc50d3ac348c76f"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Return_Operational_Payment_to_Draft-2ac4cc65.json",
+      "name": "Return Operational Payment to Draft",
+      "sha256": "2ac4cc65154113844739b04f250b9e917d1547a2bd0116e94b1dada656e7c6a6"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Send_Operational_Payment_for_Approval-9e0580f1.json",
+      "name": "Send Operational Payment for Approval",
+      "sha256": "9e0580f1119723b2cb918f5c768c5b3fcb62f8c1a100120fb92a8eb0d197ad5e"
+    },
+    {
+      "doctype": "Workflow Action Master",
+      "file": "Workflow_Action_Master/Send_for_Approval-c98654ab.json",
+      "name": "Send for Approval",
+      "sha256": "c98654ab49b8acf837701d14560a284eff4e6f5bf2e56e353ca5766f13fee73c"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Approved-6ea6daa9.json",
+      "name": "Approved",
+      "sha256": "6ea6daa9c7f43dcc280cf3f9066ca72c2e09d8464d175386eb7372c654aae46d"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Cancelled-6886815d.json",
+      "name": "Cancelled",
+      "sha256": "6886815dcd2bf716bd02deefab44d2b332d8c21e82a05fe33f926ca7ca58e3d6"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Draft-c4cb965c.json",
+      "name": "Draft",
+      "sha256": "c4cb965c349abe1e45be410ea55c6acac7a925568d9579895c808293e8141d1e"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Paid-37d05955.json",
+      "name": "Paid",
+      "sha256": "37d059556cc834c481229851dc5fb3e223eed6b14bab6013dbd01579e38720a1"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Pending_Approval-2b8a1817.json",
+      "name": "Pending Approval",
+      "sha256": "2b8a1817a4f17a8db83f44117554b2b741c6f04d9f4443d81935c22999a50e55"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Pending_COO_Approval-6a983160.json",
+      "name": "Pending COO Approval",
+      "sha256": "6a98316099e0112ab3a1e2493248b88de23bb155a511d28ac009118bb9816ea4"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Pending_Department_Approval-d3acb6f3.json",
+      "name": "Pending Department Approval",
+      "sha256": "d3acb6f3b365448a47cf825b0de58fdff5239f7725dda375aaf41b62d90b4603"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Rejected-fe0c31a1.json",
+      "name": "Rejected",
+      "sha256": "fe0c31a1afa98c41f72b50921959016c9e999fe9687fd8d13744a73d6afca9b5"
+    },
+    {
+      "doctype": "Workflow State",
+      "file": "Workflow_State/Returned_for_Correction-3b4fb56d.json",
+      "name": "Returned for Correction",
+      "sha256": "3b4fb56d0bfc72684bbd2fb6912ce7e0317bd19d5f584659658a986fe824f8f5"
+    }
+  ],
+  "source_site": "okavango-migration.localhost",
+  "workflow_activation_approved": false
+}

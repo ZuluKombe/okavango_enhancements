@@ -1,0 +1,7 @@
+{
+  "doctype": "Workflow State",
+  "icon": "",
+  "name": "Paid",
+  "style": "Success",
+  "workflow_state_name": "Paid"
+}

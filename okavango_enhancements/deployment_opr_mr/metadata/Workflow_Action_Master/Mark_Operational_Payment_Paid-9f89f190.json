@@ -1,0 +1,5 @@
+{
+  "doctype": "Workflow Action Master",
+  "name": "Mark Operational Payment Paid",
+  "workflow_action_name": "Mark Operational Payment Paid"
+}

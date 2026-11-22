@@ -1,0 +1,122 @@
+{
+  "doctype": "Workflow",
+  "document_type": "Operational Payment Request",
+  "is_active": 1,
+  "name": "Okavango Operational Payment Approval",
+  "override_status": 0,
+  "send_email_alert": 0,
+  "states": [
+    {
+      "allow_edit": "Operational Payment Requester",
+      "avoid_status_override": 0,
+      "doc_status": "0",
+      "doctype": "Workflow Document State",
+      "is_optional_state": 0,
+      "message": null,
+      "next_action_email_template": null,
+      "state": "Draft",
+      "update_field": null,
+      "update_value": null,
+      "workflow_builder_id": null
+    },
+    {
+      "allow_edit": "Operational Payment Approver",
+      "avoid_status_override": 0,
+      "doc_status": "0",
+      "doctype": "Workflow Document State",
+      "is_optional_state": 0,
+      "message": null,
+      "next_action_email_template": null,
+      "state": "Pending Approval",
+      "update_field": null,
+      "update_value": null,
+      "workflow_builder_id": null
+    },
+    {
+      "allow_edit": "Operational Payment Finance",
+      "avoid_status_override": 0,
+      "doc_status": "1",
+      "doctype": "Workflow Document State",
+      "is_optional_state": 0,
+      "message": null,
+      "next_action_email_template": null,
+      "state": "Approved",
+      "update_field": null,
+      "update_value": null,
+      "workflow_builder_id": null
+    },
+    {
+      "allow_edit": "Operational Payment Finance",
+      "avoid_status_override": 0,
+      "doc_status": "1",
+      "doctype": "Workflow Document State",
+      "is_optional_state": 0,
+      "message": null,
+      "next_action_email_template": null,
+      "state": "Paid",
+      "update_field": null,
+      "update_value": null,
+      "workflow_builder_id": null
+    }
+  ],
+  "transitions": [
+    {
+      "action": "Send Operational Payment for Approval",
+      "allow_self_approval": 1,
+      "allowed": "Operational Payment Requester",
+      "condition": null,
+      "doctype": "Workflow Transition",
+      "next_state": "Pending Approval",
+      "send_email_to_creator": 0,
+      "state": "Draft",
+      "workflow_builder_id": null
+    },
+    {
+      "action": "Approve Operational Payment",
+      "allow_self_approval": 0,
+      "allowed": "Operational Payment Approver",
+      "condition": null,
+      "doctype": "Workflow Transition",
+      "next_state": "Approved",
+      "send_email_to_creator": 0,
+      "state": "Pending Approval",
+      "workflow_builder_id": null
+    },
+    {
+      "action": "Return Operational Payment to Draft",
+      "allow_self_approval": 0,
+      "allowed": "Operational Payment Approver",
+      "condition": null,
+      "doctype": "Workflow Transition",
+      "next_state": "Draft",
+      "send_email_to_creator": 0,
+      "state": "Pending Approval",
+      "workflow_builder_id": null
+    },
+    {
+      "action": "Mark Operational Payment Paid",
+      "allow_self_approval": 0,
+      "allowed": "Operational Payment Finance",
+      "condition": null,
+      "doctype": "Workflow Transition",
+      "next_state": "Paid",
+      "send_email_to_creator": 0,
+      "state": "Approved",
+      "workflow_builder_id": null
+    },
+    {
+      "action": "Reopen Operational Payment for Correction",
+      "allow_self_approval": 0,
+      "allowed": "Operational Payment Finance",
+      "condition": null,
+      "doctype": "Workflow Transition",
+      "next_state": "Approved",
+      "send_email_to_creator": 0,
+      "state": "Paid",
+      "workflow_builder_id": null
+    }
+  ],
+  "workflow_data": null,
+  "workflow_name": "Okavango Operational Payment Approval",
+  "workflow_state_field": "workflow_state"
+}
