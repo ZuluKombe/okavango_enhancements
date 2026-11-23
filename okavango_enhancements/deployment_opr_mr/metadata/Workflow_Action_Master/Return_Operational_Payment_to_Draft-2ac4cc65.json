@@ -1,0 +1,5 @@
+{
+  "doctype": "Workflow Action Master",
+  "name": "Return Operational Payment to Draft",
+  "workflow_action_name": "Return Operational Payment to Draft"
+}

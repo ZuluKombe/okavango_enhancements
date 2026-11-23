@@ -1,0 +1,14 @@
+{
+  "default_value": null,
+  "doc_type": "Material Request",
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocType",
+  "field_name": null,
+  "is_system_generated": 0,
+  "module": null,
+  "name": "Material Request-main-grid_page_length",
+  "property": "grid_page_length",
+  "property_type": "Int",
+  "row_name": null,
+  "value": "50"
+}

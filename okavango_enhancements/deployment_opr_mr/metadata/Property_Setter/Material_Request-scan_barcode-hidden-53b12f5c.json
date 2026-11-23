@@ -1,0 +1,14 @@
+{
+  "default_value": null,
+  "doc_type": "Material Request",
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "scan_barcode",
+  "is_system_generated": 1,
+  "module": null,
+  "name": "Material Request-scan_barcode-hidden",
+  "property": "hidden",
+  "property_type": "Check",
+  "row_name": null,
+  "value": "0"
+}

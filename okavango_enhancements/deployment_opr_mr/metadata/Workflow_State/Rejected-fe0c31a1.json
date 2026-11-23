@@ -1,0 +1,7 @@
+{
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+}

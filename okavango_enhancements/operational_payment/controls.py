@@ -110,6 +110,48 @@ def _source_note(source):
     return ' | '.join(pieces)[:1000]
 
 
+
+def _mapped_payment_account(source):
+    """Resolve and validate a company-specific OPR payment ledger."""
+    mapping = frappe.conf.get("okavango_opr_payment_accounts") or {}
+
+    if not isinstance(mapping, dict):
+        frappe.throw(_("Invalid OPR payment account configuration."))
+
+    company_mapping = mapping.get(source.company) or {}
+    method = (source.get("payment_method") or "").strip()
+    name = company_mapping.get(method)
+
+    if not name:
+        frappe.throw(
+            _("No payment account configured for {0} / {1}.").format(
+                source.company, method
+            )
+        )
+
+    account = frappe.db.get_value(
+        "Account",
+        name,
+        [
+            "company", "root_type", "account_type",
+            "account_currency", "is_group", "disabled"
+        ],
+        as_dict=True,
+    )
+
+    if (
+        not account
+        or account.company != source.company
+        or account.root_type != "Asset"
+        or account.account_type not in ("Cash", "Bank")
+        or account.account_currency != "ZMW"
+        or account.is_group
+        or account.disabled
+    ):
+        frappe.throw(_("Invalid configured OPR payment account: {0}").format(name))
+
+    return name
+
 @frappe.whitelist()
 def get_button_state(source_name):
     if not _enabled() or not _finance_user():
@@ -151,7 +193,7 @@ def get_journal_entry_prefill(source_name):
         'accounts': [
             {'debit_in_account_currency': amount, 'credit_in_account_currency': 0,
              'debit': amount, 'credit': 0, 'cost_center': source.get('cost_center') or None},
-            {'debit_in_account_currency': 0, 'credit_in_account_currency': amount,
+            {'account': _mapped_payment_account(source), 'debit_in_account_currency': 0, 'credit_in_account_currency': amount,
              'debit': 0, 'credit': amount},
         ],
         'amount': amount,
@@ -232,6 +274,13 @@ def validate_journal_entry(doc, method=None):
     _check_account(debit.account, source.company, expense=True)
     _check_account(credit.account, source.company, expense=False)
 
+    expected_account = _mapped_payment_account(source)
+    if credit.account != expected_account:
+        frappe.throw(
+            _("Credit account must match the configured payment method: {0}")
+            .format(expected_account)
+        )
+
 
 def _sync_request(doc, *, status, clear=False):
     source_name = doc.get(JE_LINK_FIELD)
@@ -293,9 +342,9 @@ def _assert_paid_evidence(doc):
         frappe.throw(_('A matching, submitted Journal Entry is required before Paid.'))
     if _money(doc.get('paid_amount')) != _money(doc.requested_amount):
         frappe.throw(_('Full payment must match the approved amount.'))
-    if not doc.get('paid_on') or not doc.get('payment_proof'):
-        frappe.throw(_('Payment date and payment proof are mandatory before Paid.'))
-    if not frappe.db.exists('File', {
+    # Payment date and proof are optional.
+    # Supplied proof must belong to this OPR.
+    if doc.get('payment_proof') and not frappe.db.exists('File', {
         'file_url': doc.payment_proof,
         'attached_to_doctype': REQUEST_DTYPE,
         'attached_to_name': doc.name,
