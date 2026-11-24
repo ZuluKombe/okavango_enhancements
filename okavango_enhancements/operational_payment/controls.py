@@ -229,7 +229,19 @@ def validate_journal_entry(doc, method=None):
         return  # Supplier/unrelated JEs remain unaffected.
     if not _enabled() and not previous_source:
         frappe.throw(_('Operational expense creation is disabled on this site.'))
-    _require_finance()
+    gl_approval_enabled = str(
+        frappe.conf.get("okavango_finance_gl_approval_enabled", "0")
+    ).lower() in ("1", "true", "yes")
+
+    if int(doc.docstatus) == 1 and gl_approval_enabled:
+        from okavango_enhancements.finance_gl_approval.controls import (
+            is_authorized_approver,
+        )
+        if not is_authorized_approver():
+            _require_finance()
+    else:
+        _require_finance()
+
     permission = 'create' if doc.is_new() else ('submit' if int(doc.docstatus) == 1 else 'write')
     if not frappe.has_permission(JOURNAL_DTYPE, permission, doc=doc):
         frappe.throw(_('Insufficient Journal Entry permissions.'), frappe.PermissionError)
