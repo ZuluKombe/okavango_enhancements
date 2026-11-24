@@ -315,3 +315,51 @@ doctype_list_js = {
 }
 
 # END OKAVANGO MATERIAL REQUEST AUTOMATION
+
+
+# OKAVANGO_GL_APPROVAL_BEGIN
+# INSERT into EXISTING okavango_enhancements/hooks.py.
+# Preserve the current doc_events dictionary and all OPR/MR hooks.
+# Add this below their registrations (never assign a second doc_events = {})
+
+def _register_finance_gl_hook(doctype, event, handler):
+    current = doc_events.setdefault(doctype, {})
+    existing = current.get(event)
+    if not existing:
+        current[event] = handler
+    elif isinstance(existing, (list, tuple)):
+        if handler not in existing:
+            current[event] = list(existing) + [handler]
+    elif existing != handler:
+        current[event] = [existing, handler]
+
+
+for _doctype in ("Payment Entry", "Journal Entry"):
+    for _event, _function in (
+        ("validate", "validate"),
+        ("before_submit", "before_submit"),
+        ("before_cancel", "before_cancel"),
+        ("before_update_after_submit", "before_update_after_submit"),
+        ("on_update", "on_update"),
+    ):
+        _register_finance_gl_hook(
+            _doctype, _event,
+            "okavango_enhancements.finance_gl_approval.controls." + _function,
+        )
+_register_finance_gl_hook(
+    "Expense Entry",
+    "validate",
+    "okavango_enhancements.finance_gl_approval.controls.expense_validate_return",
+)
+_register_finance_gl_hook(
+    "Expense Entry",
+    "on_update",
+    "okavango_enhancements.finance_gl_approval.controls.expense_on_update",
+)
+_register_finance_gl_hook(
+    "Expense Entry",
+    "before_submit",
+    "okavango_enhancements.finance_gl_approval.controls.expense_before_submit",
+)
+
+# OKAVANGO_GL_APPROVAL_END
